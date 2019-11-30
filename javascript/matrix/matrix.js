@@ -1,5 +1,3 @@
-import { thisExpression } from "@babel/types";
-
 export class Matrix {
   
   constructor(stringMatrix) {
@@ -19,7 +17,7 @@ export class Matrix {
     let columnMatrix = []
     for (let i = 0; i < this.matrix.length; i++) {
       for (let j = 0; j < this.matrix[i].length; j++) {
-        if (!columnMatrix[j]) columnMatrix[j] = []
+        if (i == 0) columnMatrix[j] = []
         columnMatrix[j].push(this.matrix[i][j])
       }
     }
