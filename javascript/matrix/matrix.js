@@ -2,11 +2,10 @@ export class Matrix {
   
   constructor(stringMatrix) {
     this.matrix = []
-    let rows = stringMatrix.split("\n")
-    for(let i = 0; i< rows.length; i++){
-      let values = rows[i].split(" ").map(value => +value)
-      this.matrix[i] = values
-    }
+    stringMatrix.split("\n").map((row, index) => {
+      let values = row.split(" ").map(value => +value)
+      this.matrix[index] = values
+    })
   }
 
   get rows() {
