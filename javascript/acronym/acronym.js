@@ -1,0 +1,1 @@
+export const parse = longName => longName.toUpperCase().replace(/-/g, " ").replace(/[^a-zA-Z ]/g, "").match(/(\w)+/g).map(word => word[0]).join("")
