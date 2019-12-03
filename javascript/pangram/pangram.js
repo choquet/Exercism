@@ -17,9 +17,5 @@ export const isPangram2 = sentence => (new Set(sentence.toLowerCase().match(/[a-
  * 
  * @param {String} sentence 
  */
-export const isPangram3= sentence => {
-  let alphabetArray = "abcdefghijklmnopqrstuvwxyz".split("")
-  let sentenceArray = sentence.toLowerCase().split("")
-  return alphabetArray.every((letter) => sentenceArray.includes(letter))
-}
+export const isPangram3 = sentence => "abcdefghijklmnopqrstuvwxyz".every((letter) => sentence.includes(letter))
 
