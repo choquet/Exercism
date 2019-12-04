@@ -10,19 +10,14 @@ export const hey = (message) => {
 
   message = message.trim()
 
-  let question = message.endsWith("?")
-  let yell = (message == message.toUpperCase()) && (/[a-zA-Z]+/.test(message))
-  let silence = (message.length == 0)
+  const question = message.endsWith("?")
+  const yell = (message == message.toUpperCase()) && (/[a-zA-Z]+/.test(message))
+  const silence = (message.length == 0)
 
-  if (yell && question) {
-    return ANSWERS.yellQuestion
-  } else if (yell) {
-    return ANSWERS.yell
-  } else if (question) {
-    return ANSWERS.question
-  } else if (silence) {
-    return ANSWERS.addressHim
-  } else {
-    return ANSWERS.else
-  }
+  if (yell && question) return ANSWERS.yellQuestion
+  if (yell) return ANSWERS.yell
+  if (question) return ANSWERS.question
+  if (silence) return ANSWERS.addressHim
+  return ANSWERS.else
+  
 };
