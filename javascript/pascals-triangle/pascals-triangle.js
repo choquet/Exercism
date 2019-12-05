@@ -4,15 +4,14 @@ export class Triangle {
     this._rows = []
 
     for(let i = 0; i < nbRows ; i++) {
-      let row = []
-
+      
       // initialization
-      row.push(1)
+      let row = [1]
 
       // next value computed from above value
       for (let j = 1; j <= i; j++) {
-        let upValue1 = this._rows[i - 1][j - 1]
-        let upValue2 = (this._rows[i - 1][j]) ? this._rows[i - 1][j] : 0
+        const upValue1 = this._rows[i - 1][j - 1]
+        const upValue2 = this._rows[i - 1][j] || 0
         row.push(upValue1 + upValue2)
       }
 
