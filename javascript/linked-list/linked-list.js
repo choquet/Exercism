@@ -1,34 +1,12 @@
-export class LinkedList {
+export class LinkedList extends Array { }
 
-  constructor() {
-    this._list = []
-  }
+LinkedList.prototype.count = function() {
+  return this.length;
+}
 
-  push(node) {
-    this._list.push(node)
-  }
-
-  pop() {
-    return this._list.pop()
-  }
-
-  shift() {
-    return this._list.shift()
-  }
-
-  unshift(node) {
-    this._list.unshift(node)
-  }
-
-  delete(node) {
-    const index = this._list.indexOf(node)
-
-    if(index != -1) {
-      this._list.splice(index, 1)
-    }
-  }
-
-  count() {
-    return this._list.length
+LinkedList.prototype.delete = function(value) {
+  const index = this.indexOf(value)
+  if (index !== -1) {
+    this.splice(index, 1)
   }
 }
