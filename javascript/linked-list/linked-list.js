@@ -44,13 +44,13 @@ export class LinkedList {
     const node = new Node(value, this._last, null)
 
     // Set next node of the current last node to created node
-    if (this.length != 0) this._last.next = node
+    if (this.length) this._last.next = node
 
     // Define created node as last node of our linked list
     this._last = node
 
     // if list is empty first = last
-    if (this.length == 0) this._first = this._last
+    if (!this.length) this._first = this._last
 
     // Increment list length
     this._length++
@@ -112,13 +112,13 @@ export class LinkedList {
     const node = new Node(value, null, this._first)
 
     // Set previous node of the current first node to created node
-    if (this.length != 0) this._first.prev = node
+    if (this.length) this._first.prev = node
 
     // Define created node as first node of our linked list
     this._first = node
 
     // if list is empty last = first
-    if (this.length == 0) this._last = this._first
+    if (!this.length) this._last = this._first
 
     // Increment list length
     this._length++
@@ -144,7 +144,7 @@ export class LinkedList {
     while(current) {
 
       // current node match delete value
-      if(current.value == value) {
+      if(current.value === value) {
 
         if (current.prev) current.prev.next = current.next
         else {
