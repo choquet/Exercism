@@ -17,21 +17,18 @@ export class Triplet {
     return this._a**2 + this._b**2 == this._c**2
   }
 
-  static compare(one, two) {
-    return one._a - two._a || one._b - two._b || one._c - two._c
+  toString() {
+    return (this._a + '').padStart(15, '0');
   }
 
   static where({ sum = 0, minFactor = 1, maxFactor }) {
     let triplets = []
-    for (let c = minFactor + 2; c <= maxFactor; c++) {
-      for (let b = minFactor + 1; b < c; b++) {
-        for (let a = minFactor; a < b; a++) {
+    for (let b = minFactor + 1; b < maxFactor; b++) {
+      for (let a = minFactor; a < b; a++) {
+        let c = Math.sqrt(a**2 + b**2)
+        if(c <= maxFactor && Number.isInteger(c)){
           const triplet = new Triplet(a, b, c)
-          if (triplet.isPythagorean()) {
-            if (!sum || sum == triplet.sum()){
-              triplets.push(triplet)
-            }
-          }
+          if (triplet.isPythagorean() && (!sum || sum == triplet.sum())) triplets.push(triplet)
         }
       }
     }
