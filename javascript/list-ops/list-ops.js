@@ -8,43 +8,69 @@ export class List {
     return this.datas
   }
 
+  shift() {
+    let [first, ...others] = this.datas
+    this.datas = others
+    return first
+  }
+
+  unshift(el) {
+    this.datas = [el, ...this.datas]
+  }
+
+  push(el) {
+    this.datas = [...this.datas, el]
+  }
+
+  pop() {
+    this.datas = this.reverse().values
+    let [last, ...others] = this.datas
+    this.datas = others
+    this.datas = this.reverse().values
+    return last
+  }
+
   append(list) {
-    list.values.forEach(el => {
-      this.datas.push(el)
-    })
+    for(const el of list.values) {
+      this.push(el)
+    }
     return this
   }
 
   concat(lists) {
-    lists.values.forEach(list => {
+    for (const list of lists.values) {
       this.append(list)
-    })
+    }
     return this
   }
 
   filter(predicate) {
     let filteredList = new List()
-    this.values.forEach(el => {
-      if(predicate(el)) filteredList.values.push(el)
-    })
+    for (const el of this.values) {
+      if (predicate(el)) filteredList.push(el)
+    }
     return filteredList
   }
 
   map(fct) {
     let mappedList = new List()
-    this.values.forEach(el => {
-      mappedList.values.push(fct(el))
-    })
+    for (const el of this.values) {
+      mappedList.push(fct(el))
+    }
     return mappedList
   }
 
   length() {
-    return this.values.length
+    let length = 0
+    while (this.datas[length] != undefined) {
+      length++
+    }
+    return length
   }
 
   foldl(reducer, accumulator) {
     if(this.length()) {
-      let element = this.values.shift()
+      let element = this.shift()
       return this.foldl(reducer, reducer(accumulator, element))
     } else {
       return accumulator
@@ -53,7 +79,7 @@ export class List {
 
   foldr(reducer, accumulator) {
     if (this.length()) {
-      let element = this.values.pop()
+      let element = this.pop()
       return this.foldr(reducer, reducer(accumulator, element))
     } else {
       return accumulator
@@ -62,9 +88,9 @@ export class List {
 
   reverse() {
     let reversedList = new List()
-    this.values.forEach(el => {
-      reversedList.values.unshift(el)
-    })
+    for(const el of this.values) {
+      reversedList.unshift(el)
+    }
     return reversedList
   }
 }
