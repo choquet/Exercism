@@ -1,5 +1,5 @@
 object Pangram {
 
-    fun isPangram(input: String): Boolean = "abcdefghijklmnopqrstuvwxyz".split("").all {input.contains(it, true)}
-    
+    fun isPangram(input: String): Boolean = ('a'..'z').all { input.contains(it, true) }
+
 }
