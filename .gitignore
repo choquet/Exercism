@@ -4,3 +4,7 @@ node_modules
 .vscode
 build
 .gradle
+
+**/.dart_tool/**
+.packages
+pubspec.lock
