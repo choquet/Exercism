@@ -1,10 +1,21 @@
-node_modules
-.exercism
+# System
 .DS_Store
-.vscode
-build
-.gradle
 
-**/.dart_tool/**
+# Exercism
+.exercism
+
+# VS Code
+.vscode
+
+# JS
+package-lock.json
+node_modules
+
+# Dart
+.dart_tool/
 .packages
 pubspec.lock
+
+# Kotlin
+.gradle
+build
